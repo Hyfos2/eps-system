@@ -40,6 +40,15 @@
    	 @include('admin.setting')
 
 		<!-- start: MAIN JAVASCRIPTS -->
+<script src="{{asset('js/jqueryf.js')}}"></script>
+@include('flashy::message')
+<script src="{{asset('js/jquery.min.js')}}"></script>
+<script src="{{asset('js/jquery.form-validator.min.js')}}"></script>
+<script>
+    $.validate({
+        form : '#DocReg'
+    });
+</script>
 		<script src="{{asset('css/vendor/jquery/jquery.min.js')}}"></script>
 		<script src="{{asset('css/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
 		<script src="{{asset('css/vendor/modernizr/modernizr.js')}}"></script>

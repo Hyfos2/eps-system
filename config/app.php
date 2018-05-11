@@ -167,8 +167,9 @@ return [
         Laracasts\Flash\FlashServiceProvider::class,
         niklasravnsborg\LaravelPdf\PdfServiceProvider::class,
         Srmklive\FlashAlert\FlashAlertServiceProvider::class,
-        rizalafani\fpdflaravel\FpdfServiceProvider::class,
+//        rizalafani\fpdflaravel\FpdfServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+        MercurySeries\Flashy\FlashyServiceProvider::class,
 
 
 
@@ -236,8 +237,9 @@ return [
         'Laratrust'   => Laratrust\LaratrustFacade::class,
         'PDF' => niklasravnsborg\LaravelPdf\Facades\Pdf::class,
         'FlashAlert' => Srmklive\FlashAlert\Facades\FlashAlert::class,
-        'FPDF' => rizalafani\fpdflaravel\FpdfFacade::class,
+//        'FPDF' => rizalafani\fpdflaravel\FpdfFacade::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        'Flashy' => MercurySeries\Flashy\Flashy::class,
 
     ],
 

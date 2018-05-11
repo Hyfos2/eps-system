@@ -45,7 +45,7 @@
                                 <td class="hidden-xs">{{$item->name}} {{$item->surname}}</td>
                                 <td>{{$item->specialisation}}</td>
                                 <td>{{$item->address}}</td>
-                                <td>{{$item->consultation}}</td>
+                                <td>${{$item->consultation}} per session</td>
                                 <td>{{$item->cellphone}}</td>
                                 <td >
                                     <div class="visible-md visible-lg hidden-sm hidden-xs">

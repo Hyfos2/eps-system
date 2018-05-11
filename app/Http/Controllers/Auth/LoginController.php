@@ -8,11 +8,9 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 class LoginController extends Controller
 {
 
-
     use AuthenticatesUsers;
 
   //  protected $redirectTo = '/dashboard';
-
 
 //    public function __construct()
 //    {

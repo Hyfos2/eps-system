@@ -31,7 +31,7 @@
 												</div>
 												<div class="panel-body">
 									
-													<form role="form" name="adddoc" method="POST" action="{{route('register')}}" onSubmit="return valid();">
+													<form role="form" name="adddoc" method="POST" action="{{route('register')}}" id="DocReg">
 														{{csrf_field()}}
 
 														<input type="hidden" value="2"  name="userType">
@@ -41,13 +41,13 @@
 															<label for="DoctorSpecialization">
 																Doctor Specialization
 															</label>
-							<select name="specialisation" class="form-control" required="required">
+							<select name="specialisation" class="form-control"  data-validation="required">
 																<option value="">Select Specialization</option>
 																@foreach($data as $item)
-																<option value="{{$item->id}}">
-																	{{$item->specialisation}}
-																</option>
-																	@endforeach
+									<option value="{{$item->id}}" @if(old('specialisation') == $item->id) {{ 'selected' }} @endif>{{ $item->specialisation }}</option>
+								                 	{{--<option value=" {{(old('specialisation') == $item->specialisation?'selected':'')}} " >{{$item->specialisation}}</option>--}}
+									             {{--<option value="" @if (old('specialisation') == $item->specialisation) selected="selected" @endif>{{$item->specialisation}}</option>--}}
+									@endforeach
 															</select>
 														</div>
 
@@ -55,30 +55,42 @@
 	<label for="doctorname">
 																 Doctor Name
 	</label>
-					<input type="text" name="name" class="form-control"  autocomplete="off" placeholder="Enter Doctor Name">
+					<input type="text" name="name" class="form-control"  autocomplete="off" placeholder="Enter Doctor Name" value="{{old('name')}}"  data-validation="required"  data-validation-length="max20">
+								@if ($errors->has('name'))
+									<span class="help-block" style="color:red;">
+										<strong>{{ $errors->first('name') }}</strong>
+									</span>
+								@endif
+
 														</div>
 														<div class="form-group">
 															<label for="doctorname">
 																Doctor Surname
 															</label>
-															<input type="text" name="surname" class="form-control" value="{{old('name')}}"  autocomplete="off" placeholder="Enter Doctor Surname">
+															<input type="text" name="surname" class="form-control" value="{{old('surname')}}"  data-validation="required" autocomplete="off" placeholder="Enter Doctor Surname">
+															@if ($errors->has('surname'))
+																<span class="help-block" style="color:red;">
+                                        <strong>{{ $errors->first('surname') }}</strong>
+                                    </span>
+															@endif
 														</div>
 
 														<div class="form-group">
 															<label for="DoctorSpecialization">
 																Gender
 															</label>
-															<select name="gender" class="form-control" required="required">
+															<select name="gender" class="form-control" data-validation="required">
 																<option value="">Select Gender</option>
 
-																<option value="male">
-																	Male
-																</option>
-																<option value="female">
-																	Female
+																<option value="Male" @if (old('gender') == 'Male') selected="selected" @endif>Male</option>
+																<option value="Female" @if (old('gender') == 'Female') selected="selected" @endif>Female</option>
 
-																</option>
 															</select>
+															@if ($errors->has('gender'))
+																<span class="help-block" style="color:red;">
+                                        <strong>{{ $errors->first('gender') }}</strong>
+                                    </span>
+															@endif
 														</div>
 
 
@@ -86,20 +98,20 @@
 	<label for="address">
 																 Doctor Clinic Address
 															</label>
-					<textarea name="address" class="form-control" value="{{old('address')}}"   placeholder="Enter Doctor Clinic Address"></textarea>
+					<textarea name="address" class="form-control"   data-validation="required" placeholder="Enter Doctor Clinic Address">{{old('address')}}</textarea>
 														</div>
 <div class="form-group">
 															<label for="fess">
 																 Doctor Consultancy Fees
 															</label>
-					<input type="text" name="consultation" class="form-control" value="{{old('consultation')}}"  autocomplete="off"  placeholder="Enter Doctor Consultancy Fees">
+					<input type="text" name="consultation" class="form-control" value="{{old('consultation')}}" data-validation="required|number"  autocomplete="off"  placeholder="Enter Doctor Consultancy Fees">
 														</div>
 	
 <div class="form-group">
 									<label for="fess">
 																 Doctor Cellphone Number
 															</label>
-					<input type="text" name="cellphone" class="form-control" value="{{old('cellphone')}}"   autocomplete="off" placeholder="Enter Doctor Contact no">
+					<input type="text" name="cellphone" class="form-control" value="{{old('cellphone')}}"  data-validation="required|number" autocomplete="off" placeholder="Enter Doctor Contact no">
 	@if ($errors->has('cellphone'))
 		<span class="help-block" style="color:red;">
                                         <strong>{{ $errors->first('cellphone') }}</strong>
@@ -111,7 +123,7 @@
 									<label for="fess">
 																 Doctor Email
 															</label>
-															<input type="email" name="email" class="form-control" value="{{old('email')}}"  autocomplete="off"  placeholder="Enter Doctor Email">
+															<input type="email" name="email" class="form-control" value="{{old('email')}}"  data-validation="required|email" autocomplete="off"  placeholder="Enter Doctor Email">
 	@if ($errors->has('email'))
 		<span class="help-block" style="color:red;">
                                         <strong>{{ $errors->first('email') }}</strong>

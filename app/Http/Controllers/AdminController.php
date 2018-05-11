@@ -58,15 +58,13 @@ class AdminController extends Controller
        return back();
 
    }
-
-    protected function validator(array $data)
+   protected function validator(array $data)
     {
         return Validator::make($data,
             [
-                'specialisation'=>'unique:doctor_specialisations'
+                'specialisation'=>'required|alpha|unique:doctor_specialisations'
             ]);
     }
-
     public function deleteDoctor($user)
     {
         //return $user;
@@ -74,7 +72,6 @@ class AdminController extends Controller
         $user      =User::where('id',$user)->update(['active'=>0]);
         return back();
     }
-
    public function newDoctors()
    {
        $data   = DoctorSpecialisation::where('active',1)->get();
@@ -93,12 +90,10 @@ class AdminController extends Controller
    {
        return view('admin.addPharmacist');
    }
-
    public function newPharmacist(Request $request)
    {
         return $request->all();
    }
-
    public function managePharmacist($user =NULL)
    {
        if(!is_null($user))

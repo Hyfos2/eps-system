@@ -15,7 +15,8 @@ class UserDetailsSeederTable extends Seeder
             'id'=>1,
             'user'=>2,
             'specialisation'=>1,
-            'consultation'=>'$50 per hour',
+            'consultation'=>'50',
+            'cellphone'=>'0775635191',
             'address'=>'5 Tecoma groove',
             'active'=>1
         ]);

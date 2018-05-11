@@ -20,32 +20,36 @@
             </section>
             <!-- end: PAGE TITLE -->
             <!-- start: BASIC EXAMPLE -->
-            <div class="container-fluid container-fullw bg-white">
+            <div class="container-fluid container-fullw bg-white" style="margin-top:-25px;">
                 <div class="row">
                     <div class="col-md-12">
 
                         <div class="row margin-top-30">
                             <div class="col-lg-6 col-md-12">
                                 <div class="panel panel-white" >
-                                    <div class="panel-heading" style="margin-bottom: 5px; margin-height:8px; margin-left:-10px;">Add Specialisation
+                                    <div class="panel-heading" style="margin-bottom: 5px; margin-height:8px; margin-left:10px;">Add Specialisation
                                     </div>
                                     <div class="panel-body">
-                                        <form class="form-horizontal" method="POST"  role="form" name="dcotorspcl"  action ="{{url('addSpecialisation')}}"  id="Login">
-                                            {{ csrf_field()}}
+
+                                        <form role="form" name="adddoc" method="POST" action ="{{url('addSpecialisation')}}">
+                                            {{csrf_field()}}
+
                                             <div class="form-group">
-                                                <label>Doctor Specialization
+                                                <label for="fess">
+                                                    Doctor Specialisation
                                                 </label>
-                                                <input type="text" name="specialisation" class="form-control" value="{{old('specialisation')}}"  placeholder="Enter Doctor Specialization" autocomplete="off">
+                                                <input type="text" name="specialisation" class="form-control" value="{{old('specialisation')}}"  autocomplete="off"  placeholder="Enter Specialisation">
                                                 @if ($errors->has('specialisation'))
                                                     <span class="help-block" style="color:red;">
                                         <strong>{{ $errors->first('specialisation') }}</strong>
                                     </span>
                                                 @endif
                                             </div>
-                                            <button type="submit" name="submit" class="btn btn-o btn-primary">
+                                            <button type="submit"  class="btn btn-o btn-primary">
                                                 Submit
                                             </button>
                                         </form>
+
                                     </div>
                                 </div>
                             </div>
